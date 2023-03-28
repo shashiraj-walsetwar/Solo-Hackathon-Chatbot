@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chatbot UI</title>
+	<style>
+
+        #header {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+		#chatbot-container {
+        width: 90vw;
+        height: 90vh;
+        max-width: 800px;
+        max-height: 600px;
+        margin: 0 auto;
+        background-color: #f1f1f1;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        }
+
+
+		#chat-messages {
+			overflow-y: scroll;
+			max-height: 600px;
+		}
+
+		.chat-message {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 10px;
+		}
+
+		.chat-message .sender {
+			font-weight: bold;
+		}
+
+		.chat-message .message-text {
+			background-color: #d8e9ff;
+			padding: 10px;
+			border-radius: 10px;
+			display: inline-block;
+			max-width: 70%;
+		}
+
+		#chat-form {
+			display: flex;
+			margin-top: 10px;
+		}
+
+		#chat-input {
+			flex-grow: 1;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+		}
+
+		#chat-submit {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+    <div id="header">
+    <h1>Sikka.ai</h1>
+    <h4>Optimize your practice, maximize your profits</h4></div>
+	<div id="chatbot-container">
+		<div id="chat-messages"></div>
+		<form id="chat-form">
+			<input type="text" id="chat-input" placeholder="Ask me anything...">
+			<button type="submit" id="chat-submit">Send</button>
+		</form>
+	</div>
+
+	<script>
+		// Get the chat form, input field, and chat messages container
+		const chatForm = document.getElementById('chat-form');
+		const chatInput = document.getElementById('chat-input');
+		const chatMessages = document.getElementById('chat-messages');
+
+		// Handle form submission
+		chatForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			
+			// Get user's message
+			const message = chatInput.value;
+
+			// Display user's message in the chat
+			displayMessage('User', message);
+
+			// Display default response from bot
+			displayMessage('Bot', 'I am a chatbot. How can I assist you?');
+
+			// Clear input field
+			chatInput.value = '';
+		});
+
+		// Display message in the chat
+		function displayMessage(sender, message) {
+			const messageElement = document.createElement('div');
+			messageElement.classList.add('chat-message');
+			messageElement.innerHTML = `
+				<span class="sender">${sender}:</span>
+				<span class="message-text">${message}</span>
+			`;
+			chatMessages.appendChild(messageElement);
+			chatMessages.scrollTop = chatMessages.scrollHeight;
+		}
+	</script>
+</body>
+</html>
