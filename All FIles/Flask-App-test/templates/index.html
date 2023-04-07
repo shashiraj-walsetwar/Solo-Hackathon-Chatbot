@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chatbot UI</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>Sikka.ai</h1>
+        <h4>Optimize your practice, maximize your profits</h4>
+    </div>
+	<div id="chatbot-container">
+		<div id="chat-messages"></div>
+		<form id="chat-form" method="POST" action="/get-response">
+			<input type="text" id="user_message" name="user_message" placeholder="Ask me anything...">
+			<button type="submit" id="chat-submit">Send</button>
+		</form>
+	</div>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
