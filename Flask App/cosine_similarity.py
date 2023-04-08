@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
 # Load data from CSV file
-data = pd.read_csv(r'C:\Users\shashiraj.walsetwar\Desktop\Solo-Hackathon\Solo Hackathon\Database\full_data.csv', encoding='unicode_escape')
+data = pd.read_csv(r'full_data.csv', encoding='unicode_escape')
 
 # Define TF-IDF vectorizer
 vectorizer = TfidfVectorizer()
